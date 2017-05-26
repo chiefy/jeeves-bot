@@ -39,6 +39,10 @@ module.exports = function squadMovie(bot) {
     if(res.match && res.match[1].length === 0) {
       return;
     }
+    // don't listen to responses from bot
+    if(res.message && res.message.user && res.message.user.name === res.robot.name) {
+      return;
+    }
     if(res.match && res.match[1] && res.match[1] === 'list') {
       return res.send(JSON.stringify(cooksImages,null,"\t"));
     }
